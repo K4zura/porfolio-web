@@ -1,0 +1,46 @@
+{
+  "PAGE_TITLE": "Portafolio JohannBB",
+  "NAV": {
+    "HOME": "Inicio",
+    "TECHNOLOGIES": "Tecnologias",
+    "ABOUT": "Sobre Mí",
+    "PROJECTS": "Proyectos",
+    "CONTACT": "Contacto"
+  },
+  "HERO": {
+    "TITLE": "Johann Bonilla Bolivar",
+    "SUBTITLE": "Desarrollador de Software"
+  },
+  "ABOUT": {
+    "TITLE": "Sobre Mí",
+    "P1": "¡Hola! Soy Johann, un apasionado desarrollador de software con un enfoque en crear experiencias de usuario fluidas y soluciones eficientes. Me especializo en tecnologías web modernas y siempre estoy en busca de nuevos retos para seguir aprendiendo.",
+    "P2": "Mi objetivo es construir aplicaciones que no solo funcionen a la perfección, sino que también sean intuitivas y agradables de usar."
+  },
+  "PROJECTS": {
+    "TITLE": "Mis Proyectos",
+    "LIST": [
+      {
+        "TITLE": "Nombre del Proyecto 1",
+        "IMG": "https://a-static.besthdwallpaper.com/solo-leveling-sung-jin-woo-shadow-monarch-wallpaper-3840x2160-88320_54.jpg",
+        "DESCRIPTION": "Una breve descripción de lo que hace este proyecto, el problema que resuelve y su característica más destacada.",
+        "TAGS": ["Astro", "Svelte", "Tailwind CSS"],
+        "URL_GITHUB": "#",
+        "URL_DEMO": "#"
+      },
+      {
+        "TITLE": "Nombre del Proyecto 2",
+        "IMG": "https://images.wallpapersden.com/image/download/solo-leveling-sung-jin-woo_bGdpZ2eUmZqaraWkpJRobWllrWdma2U.jpg",
+        "DESCRIPTION": "Una breve descripción de lo que hace este proyecto, el problema que resuelve y su característica más destacada.",
+        "TAGS": ["Node.js", "Express", "PostgreSQL"],
+        "URL_GITHUB": "#",
+        "URL_DEMO": "#"
+      }
+    ]
+  },
+  "CONTACT": {
+    "TITLE": "Hablemos",
+    "DESCRIPTION": "Estoy buscando activamente nuevas oportunidades y me encantaría saber de ti. Si tienes alguna pregunta o simplemente quieres saludar, no dudes en contactarme.",
+    "EMAIL_BUTTON": "Envíame un correo",
+    "LINKEDIN_BUTTON": "Conecta en LinkedIn"
+  }
+}

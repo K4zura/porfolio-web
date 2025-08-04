@@ -1,0 +1,29 @@
+---
+import NavItem from '@components/NavItem.astro';
+
+interface Props {
+  t: any;
+}
+
+const { t } = Astro.props;
+---
+
+<nav class="flex justify-between items-center">
+  <ul class="flex items-center gap-1">
+    <NavItem href="home">
+      {t.NAV.HOME}
+    </NavItem>
+    <NavItem href="technologies">
+      {t.NAV.TECHNOLOGIES}
+    </NavItem>
+    <NavItem href="projects">
+      {t.NAV.PROJECTS}
+    </NavItem>
+    <NavItem href="about-me">
+      {t.NAV.ABOUT}
+    </NavItem>
+    <NavItem href="contact">
+      {t.NAV.CONTACT}
+    </NavItem>
+  </ul>
+</nav>

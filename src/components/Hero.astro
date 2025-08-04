@@ -1,0 +1,36 @@
+---
+import BurbleImage from './BurbleImage.astro';
+
+interface Props {
+  t: any;
+}
+
+const { t } = Astro.props;
+---
+
+<section
+  id="home"
+  class="scroll-section min-h-screen py-16 flex justify-between max-w-[880px] items-center"
+>
+  <div class="w-3/5">
+    <h1 class="font-bold text-3xl">
+      <strong class="text-[#7f47ff] dark:text-[#ffff7f]">J</strong>ohann
+      <strong class="text-[#7f47ff] dark:text-[#ffff7f]">B</strong>onilla
+      <strong class="text-[#7f47ff] dark:text-[#ffff7f]">B</strong>olivar
+    </h1>
+    <h2 class="font-semibold text-xl">{t.SUBTITLE}</h2>
+    <p
+      class="text-pretty my-3 text-secondary-text dark:text-secondary-text-dark"
+    >
+      Desarrollador de Software en formación, con experiencia práctica en
+      tecnologías como Astro, Svelte, TailwindCSS y más. Apasionado por el
+      aprendizaje continuo, busco oportunidades para crecer dentro de un equipo
+      de desarrollo profesional
+    </p>
+  </div>
+  <BurbleImage
+    src="/profile.jpg"
+    alt="Una foto de Johann Bonilla"
+    className="size-80"
+  />
+</section>

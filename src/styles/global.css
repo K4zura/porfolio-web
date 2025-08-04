@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #ffffff;
+  --color-bg-dark: #202020;
+  --color-text: #1f2937;
+  --color-text-dark: #f3f4f6;
+  --color-secondary-text: #5b6270;
+  --color-secondary-text-dark: #9ca3af;
+  --color-card: #d4d4d9;
+  --color-card-dark: #2a2a2f;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.nav-link.active {
+  @apply bg-bg-dark text-text-dark dark:bg-bg dark:text-text;
+}
+
+html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}

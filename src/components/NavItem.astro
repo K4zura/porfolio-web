@@ -1,0 +1,16 @@
+---
+interface Props {
+  href: string;
+}
+const { href } = Astro.props;
+---
+
+<li>
+  <a
+    href={`#${href}`}
+    data-nav-link={href}
+    class="nav-link px-4 py-1.5 text-sm font-medium text-black dark:text-white rounded-full transition-colors duration-300 hover:bg-bg-dark hover:text-text-dark dark:hover:text-text dark:hover:bg-bg"
+  >
+    <slot />
+  </a>
+</li>

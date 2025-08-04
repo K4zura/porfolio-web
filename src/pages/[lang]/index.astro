@@ -1,0 +1,104 @@
+---
+import Layout from '@layouts/Layout.astro';
+import es from '@i18n/es.json';
+import en from '@i18n/en.json';
+import Hero from '@components/Hero.astro';
+import TechCard from '@components/TechCard.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params;
+
+const t = lang === 'es' ? es : en;
+---
+
+<Layout title={t.PAGE_TITLE}>
+  <Hero t={t.HERO} />
+  <section
+    id="technologies"
+    class="scroll-section min-h-screen py-16 grid grid-cols-3 w-full content-center place-items-center"
+  >
+    <div class="flex flex-col">
+      <h3 class="font-semibold text-lg">Frontend</h3>
+      <ul class="flex flex-col gap-1.5">
+        <TechCard> AS </TechCard>
+        <TechCard> ES </TechCard>
+        <TechCard> TC </TechCard>
+        <TechCard> CSS </TechCard>
+      </ul>
+    </div>
+    <div class="flex flex-col">
+      <h3 class="font-semibold text-lg">Backend</h3>
+      <ul class="flex flex-col gap-1.5">
+        <TechCard> AS </TechCard>
+        <TechCard> ES </TechCard>
+        <TechCard> TC </TechCard>
+        <TechCard> CSS </TechCard>
+      </ul>
+    </div>
+    <div class="flex flex-col">
+      <h3 class="font-semibold text-lg">Others</h3>
+      <ul class="flex flex-col gap-1.5">
+        <TechCard> AS </TechCard>
+        <TechCard> ES </TechCard>
+        <TechCard> TC </TechCard>
+        <TechCard> CSS </TechCard>
+      </ul>
+    </div>
+  </section>
+  <section id="projects" class="scroll-section min-h-screen py-16">
+    PROJECTS
+  </section>
+  <section id="about-me" class="scroll-section min-h-screen py-16">
+    ABOUT ME
+  </section>
+</Layout>
+
+<script lang="ts">
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.scroll-section');
+
+    document.getElementById('theme-toggle')?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.forEach((navLink) => navLink.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.6
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const currentSectionId = entry.target.id;
+          navLinks.forEach((link) => {
+            link.classList.toggle(
+              'active',
+              link.dataset.navLink === currentSectionId
+            );
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>

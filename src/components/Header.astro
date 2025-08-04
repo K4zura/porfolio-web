@@ -1,0 +1,39 @@
+---
+import { Languages, Moon, Search, Sun } from '@lucide/astro';
+import NavBar from './NavBar.astro';
+import NavButton from './NavButton.astro';
+
+interface Props {
+  t: any;
+}
+
+const { t } = Astro.props;
+---
+
+<header
+  class="w-full flex justify-center backdrop-blur-2xl gap-20 fixed inset-0 h-12 items-center z-50"
+>
+  <a href="#home" class="font-bold text-xl basis-0 grow flex justify-end">
+    <div class="relative">
+      <span>[ {t.HERO.TITLE} ]</span>
+      <div
+        class="typing-anim w-full bg-bg dark:bg-bg-dark h-full absolute right-0 top-0"
+      >
+      </div>
+    </div>
+  </a>
+  <NavBar t={t} />
+
+  <ul class="basis-0 grow flex items-center gap-2">
+    <NavButton>
+      <Search class="size-full" />
+    </NavButton>
+    <NavButton id="change-lang">
+      <Languages class="size-full" />
+    </NavButton>
+    <NavButton id="theme-toggle">
+      <Sun class="dark:hidden size-full" />
+      <Moon class="hidden dark:block size-full" />
+    </NavButton>
+  </ul>
+</header>

@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+const { src, alt, className } = Astro.props;
+
+const clipId = `burbuja-clip-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<svg style="position: absolute; width: 0; height: 0;">
+  <defs>
+    <clipPath id={clipId} clipPathUnits="objectBoundingBox">
+      <path
+        transform="scale(0.005) translate(100 100)"
+        d="M37.2,-65.8C49.4,-57.5,61.1,-49.8,68.5,-38.9C76,-28,79.1,-14,78.8,-0.2C78.5,13.6,74.6,27.2,67.7,39C60.7,50.8,50.8,60.7,39,70C27.2,79.3,13.6,87.9,-0.3,88.5C-14.3,89.1,-28.5,81.6,-42.3,73.5C-56.1,65.4,-69.5,56.6,-77.9,44.2C-86.4,31.9,-89.9,15.9,-87.1,1.6C-84.4,-12.7,-75.3,-25.5,-68,-39.9C-60.7,-54.3,-55.3,-70.3,-44.3,-79.3C-33.2,-88.2,-16.6,-90.1,-2,-86.6C12.5,-83.1,25.1,-74.1,37.2,-65.8Z"
+      ></path>
+    </clipPath>
+  </defs>
+</svg>
+
+<div class:list={[className]} style={`clip-path: url(#${clipId});`}>
+  <Image
+    inferSize
+    loading="eager"
+    src={src}
+    alt={alt}
+    width={100}
+    height={100}
+    class="w-full h-full object-cover object-center scale-90"
+  />
+</div>
