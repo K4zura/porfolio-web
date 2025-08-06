@@ -4,6 +4,8 @@ import es from '@i18n/es.json';
 import en from '@i18n/en.json';
 import Hero from '@components/Hero.astro';
 import TechCard from '@components/TechCard.astro';
+import { Target } from '@lucide/astro';
+import Project from '@components/Project.astro';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
@@ -18,38 +20,115 @@ const t = lang === 'es' ? es : en;
   <Hero t={t.HERO} />
   <section
     id="technologies"
-    class="scroll-section min-h-screen py-16 grid grid-cols-3 w-full content-center place-items-center"
+    class="scroll-section min-h-screen py-16 grid grid-cols-3 w-3/5 content-center place-items-center"
   >
     <div class="flex flex-col">
       <h3 class="font-semibold text-lg">Frontend</h3>
-      <ul class="flex flex-col gap-1.5">
-        <TechCard> AS </TechCard>
-        <TechCard> ES </TechCard>
-        <TechCard> TC </TechCard>
-        <TechCard> CSS </TechCard>
+      <ul class="flex flex-col gap-2">
+        <TechCard>
+          <Target class="size-6" />
+          Astro
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          Svelte
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          Tailwind CSS
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          JavaScript
+        </TechCard>
       </ul>
     </div>
     <div class="flex flex-col">
       <h3 class="font-semibold text-lg">Backend</h3>
-      <ul class="flex flex-col gap-1.5">
-        <TechCard> AS </TechCard>
-        <TechCard> ES </TechCard>
-        <TechCard> TC </TechCard>
-        <TechCard> CSS </TechCard>
+      <ul class="flex flex-col gap-2">
+        <TechCard>
+          <Target class="size-6" />
+          TypeScript
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          Java
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          Node JS
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          MySQL
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          PostgreSQL
+        </TechCard>
       </ul>
     </div>
     <div class="flex flex-col">
       <h3 class="font-semibold text-lg">Others</h3>
-      <ul class="flex flex-col gap-1.5">
-        <TechCard> AS </TechCard>
-        <TechCard> ES </TechCard>
-        <TechCard> TC </TechCard>
-        <TechCard> CSS </TechCard>
+      <ul class="flex flex-col gap-2">
+        <TechCard>
+          <Target class="size-6" />
+          Python
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          Kotlin
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          Java
+        </TechCard>
+        <TechCard>
+          <Target class="size-6" />
+          PHP
+        </TechCard>
       </ul>
     </div>
   </section>
-  <section id="projects" class="scroll-section min-h-screen py-16">
-    PROJECTS
+  <section
+    id="projects"
+    class="scroll-section min-h-screen py-16 flex flex-col items-center gap-5"
+  >
+    <h2 class="font-bold text-2xl uppercase">Projects</h2>
+    <div class="w-3/4 grid grid-cols-2 grid-rows-3 gap-x-6 gap-y-8 grow">
+      <Project
+        title="Dashboard"
+        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
+        img="/project1.png"
+        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
+        github="https://github.com/K4zura/personal-dashboard"
+        website="https://personal-dashboard-murex.vercel.app"
+      />
+      <Project
+        title="Dashboard"
+        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
+        img="/project1.png"
+        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
+        github="https://github.com/K4zura/personal-dashboard"
+        website="https://personal-dashboard-murex.vercel.app"
+      />
+      <Project
+        title="Dashboard"
+        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
+        img="/project1.png"
+        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
+        github="https://github.com/K4zura/personal-dashboard"
+        website="https://personal-dashboard-murex.vercel.app"
+      />
+      <Project
+        title="Dashboard"
+        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
+        img="/project1.png"
+        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
+        github="https://github.com/K4zura/personal-dashboard"
+        website="https://personal-dashboard-murex.vercel.app"
+      />
+    </div>
   </section>
   <section id="about-me" class="scroll-section min-h-screen py-16">
     ABOUT ME
@@ -100,5 +179,53 @@ const t = lang === 'es' ? es : en;
     sections.forEach((section) => {
       observer.observe(section);
     });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.scroll-section');
+    // --- NUEVO CÓDIGO PARA CONTROLAR EL SCROLL ---
+    let isScrolling = false;
+    const cooldown = 500; // 1 segundo de espera entre scrolls
+
+    const handleWheel = (event: WheelEvent) => {
+      if (isScrolling) {
+        event.preventDefault();
+        return;
+      }
+
+      if (Math.abs(event.deltaY) > 1) {
+        event.preventDefault();
+
+        const container = document.documentElement.scrollTop
+          ? document.documentElement
+          : document.body;
+        const currentScrollTop = container.scrollTop;
+        const sectionHeight = window.innerHeight;
+
+        const currentSectionIndex = Math.round(
+          currentScrollTop / sectionHeight
+        );
+        let targetSectionIndex;
+
+        if (event.deltaY > 0) {
+          targetSectionIndex = currentSectionIndex + 1;
+        } else {
+          targetSectionIndex = currentSectionIndex - 1;
+        }
+
+        if (targetSectionIndex >= 0 && targetSectionIndex < sections.length) {
+          sections[targetSectionIndex].scrollIntoView({ behavior: 'smooth' });
+
+          isScrolling = true;
+          setTimeout(() => {
+            isScrolling = false;
+          }, cooldown);
+        }
+      }
+    };
+
+    document.body.addEventListener('wheel', handleWheel, { passive: false });
   });
 </script>

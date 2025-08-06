@@ -53,8 +53,13 @@ const t = lang === 'es' ? es : en;
     class="transition-colors duration-300 text-text dark:text-text-dark bg-bg dark:bg-bg-dark"
   >
     <Header t={t} />
-    <main class="min-h-screen flex flex-col items-center">
+    <main class="min-h-screen flex flex-col items-center overflow-y-visible">
       <slot />
     </main>
+    <div
+      class="fixed inset-0 -z-10 h-screen w-full items-center bg-bg dark:bg-bg-dark px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)] dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#477fff_100%)]"
+    >
+    </div>
+    <!-- <div class="absolute inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"></div> -->
   </body>
 </html>

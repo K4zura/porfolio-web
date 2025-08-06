@@ -1,0 +1,76 @@
+---
+import { Github, Link } from '@lucide/astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  desc: string;
+  img: string;
+  techs: string[];
+  github?: string;
+  website?: string;
+}
+
+const { title, desc, img, techs, github, website } = Astro.props;
+---
+
+<article
+  class="shadow-lg shadow-bg-dark/75 dark:shadow-bg/75 rounded grid grid-cols-7"
+>
+  <div
+    class="py-3 px-5 col-span-3 flex flex-col justify-between z-10 select-none"
+  >
+    <div>
+      <h1 class="font-semibold text-2xl flex items-center gap-2">
+        <span class="size-3 bg-[#7f47ff] dark:bg-[#477fff] rounded-full"></span>
+        {title}
+      </h1>
+      <p class="font-light">{desc}</p>
+    </div>
+    <ul class="flex gap-2">
+      {
+        techs.map((tech) => {
+          return (
+            <li class="text-nowrap text-xs px-3 py-1.5 bg-card dark:bg-card-dark rounded-full">
+              {tech}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+
+  <picture
+    class="relative h-full w-full col-span-4 pl-5 group overflow-hidden rounded"
+  >
+    <Image
+      inferSize
+      width={10}
+      height={10}
+      src={img}
+      alt={`${title} project of JohannBB`}
+      class="w-full h-full object-center object-cover -mask-linear-90 mask-linear-from-black mask-linear-from-80% mask-linear-to-transparent group-hover:scale-110 transition-transform duration-300 group-hover:blur-sm"
+    />
+
+    <div
+      class="absolute inset-0 group-hover:opacity-100 flex opacity-0 justify-center items-center gap-4 py-4 font-bold text-text-dark transition-all duration-300"
+    >
+      <a
+        href={github}
+        target="_blank"
+        class="flex items-center gap-1.5 text-sm cursor-pointer"
+      >
+        <Github class="size-4" />
+        Github
+      </a>
+      <a
+        href={website}
+        target="_blank"
+        class="flex items-center gap-1.5 text-sm cursor-pointer"
+      >
+        <Link class="size-4" />
+        Website
+      </a>
+    </div>
+  </picture>
+</article>

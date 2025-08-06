@@ -9,6 +9,9 @@
   --color-secondary-text-dark: #9ca3af;
   --color-card: #d4d4d9;
   --color-card-dark: #2a2a2f;
+  --color-surface: #7f47ff;
+  --color-surface-dark: #ffff7f;
+  --color-rose: #fe105e;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
