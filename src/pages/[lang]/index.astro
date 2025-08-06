@@ -1,10 +1,9 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import es from '@i18n/es.json';
-import en from '@i18n/en.json';
+import * as es from '@i18n/es.json';
+import * as en from '@i18n/en.json';
 import Hero from '@components/Hero.astro';
 import TechCard from '@components/TechCard.astro';
-import { Target } from '@lucide/astro';
 import Project from '@components/Project.astro';
 import AboutMe from '@components/AboutMe.astro';
 
@@ -13,8 +12,42 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-
 const t = lang === 'es' ? es : en;
+
+let technologies = null;
+
+if (lang === 'es') {
+  technologies = {
+    Frontend: ['Astro', 'Svelte', 'Tailwind CSS', 'JavaScript'],
+    Backend: ['TypeScript', 'Java', 'Node JS', 'MySQL', 'PostgreSQL'],
+    Otros: ['Python', 'Java', 'Kotlin', 'PHP']
+  };
+} else {
+  technologies = {
+    Frontend: ['Astro', 'Svelte', 'Tailwind CSS', 'JavaScript'],
+    Backend: ['TypeScript', 'Java', 'Node JS', 'MySQL', 'PostgreSQL'],
+    Others: ['Python', 'Java', 'Kotlin', 'PHP']
+  };
+}
+
+const projects = [
+  {
+    title: 'Dashboard Personal',
+    desc: t.PROJECTS.LIST[0].DESCRIPTION,
+    img: '/project_1.avif',
+    techs: ['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+    github: 'https://github.com/K4zura/personal-dashboard',
+    website: 'https://personal-dashboard-murex.vercel.app'
+  },
+  {
+    title: 'Web Page University',
+    desc: 'Trabajo de universidad presentado para proyecto final de Web I',
+    img: '/project_2.avif',
+    techs: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/K4zura/web-I-page',
+    website: 'https://k4zura.github.io/web-I-page/'
+  }
+];
 ---
 
 <Layout title={t.PAGE_TITLE}>
@@ -23,73 +56,37 @@ const t = lang === 'es' ? es : en;
     id="technologies"
     class="scroll-section min-h-screen py-16 grid grid-cols-3 w-3/5 content-center place-items-center"
   >
-    <div class="flex flex-col">
-      <h3 class="font-semibold text-lg">Frontend</h3>
-      <ul class="flex flex-col gap-2">
-        <TechCard title="Astro" />
-        <TechCard title="Svelte" />
-        <TechCard title="Tailwind CSS" />
-        <TechCard title="JavaScript" />
-      </ul>
-    </div>
-    <div class="flex flex-col">
-      <h3 class="font-semibold text-lg">Backend</h3>
-      <ul class="flex flex-col gap-2">
-        <TechCard title="TypeScript" />
-        <TechCard title="Java" />
-        <TechCard title="Node JS" />
-        <TechCard title="MySQL" />
-        <TechCard title="PostgreSQL" />
-        <TechCard title="PHP" />
-      </ul>
-    </div>
-    <div class="flex flex-col">
-      <h3 class="font-semibold text-lg">Others</h3>
-      <ul class="flex flex-col gap-2">
-        <TechCard title="Python" />
-        <TechCard title="Kotlin" />
-        <TechCard title="PHP" />
-      </ul>
-    </div>
+    {
+      Object.entries(technologies).map(([category, techs]) => (
+        <div class="flex flex-col items-center md:items-start">
+          <h3 class="font-semibold text-2xl mb-3">{category}</h3>
+          <ul class="flex flex-col gap-3">
+            {techs.map((tech) => (
+              <TechCard title={tech} />
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </section>
   <section
     id="projects"
-    class="scroll-section min-h-screen py-16 flex flex-col items-center gap-5"
+    class="scroll-section min-h-screen py-16 flex flex-col items-center justify-center gap-5"
   >
-    <h2 class="font-bold text-2xl uppercase">Projects</h2>
-    <div class="w-3/4 grid grid-cols-2 grid-rows-3 gap-x-6 gap-y-8 grow">
-      <Project
-        title="Dashboard"
-        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
-        img="/project1.png"
-        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
-        github="https://github.com/K4zura/personal-dashboard"
-        website="https://personal-dashboard-murex.vercel.app"
-      />
-      <Project
-        title="Dashboard"
-        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
-        img="/project1.png"
-        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
-        github="https://github.com/K4zura/personal-dashboard"
-        website="https://personal-dashboard-murex.vercel.app"
-      />
-      <Project
-        title="Dashboard"
-        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
-        img="/project1.png"
-        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
-        github="https://github.com/K4zura/personal-dashboard"
-        website="https://personal-dashboard-murex.vercel.app"
-      />
-      <Project
-        title="Dashboard"
-        desc="A personal dashboard of finances and control daily personal, for help you to manage your life with minimalistic and intuitive interface"
-        img="/project1.png"
-        techs={['Svelte', 'TypeScript', 'Tailwind CSS', 'Supabase']}
-        github="https://github.com/K4zura/personal-dashboard"
-        website="https://personal-dashboard-murex.vercel.app"
-      />
+    <h2 class="font-bold text-2xl uppercase">{t.PROJECTS.TITLE}</h2>
+    <div class="w-3/4 grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8">
+      {
+        projects.map((project) => (
+          <Project
+            title={project.title}
+            desc={project.desc}
+            img={project.img}
+            techs={project.techs}
+            github={project.github}
+            website={project.website}
+          />
+        ))
+      }
     </div>
   </section>
   <section id="about-me" class="scroll-section min-h-screen py-16">

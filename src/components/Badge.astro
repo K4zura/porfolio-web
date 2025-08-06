@@ -11,6 +11,9 @@ import Python from '@components/icons/Python.astro';
 import Svelte from '@components/icons/Svelte.astro';
 import Tailwind from '@components/icons/Tailwind.astro';
 import TypeScript from '@components/icons/TypeScript.astro';
+import Supabase from '@components/icons/Supabase.astro';
+import Html from './icons/Html.astro';
+import Css from './icons/Css.astro';
 
 interface Props {
   title: string;
@@ -30,21 +33,18 @@ const icons = {
   python: Python,
   kotlin: Kotlin,
   php: Php,
-  node: NodeJs
+  node: NodeJs,
+  supabase: Supabase,
+  html: Html,
+  css: Css
 };
 
 const Icon = icons[title.toLowerCase().split(' ')[0]];
 ---
 
-<!-- <li
-  class="text-xs w-56 bg-gradient-to-r from-surface dark:from-surface-dark to-transparent to-90% py-2 px-3 rounded flex gap-2 items-center text-text-dark dark:text-text font-medium"
->
-  {Icon && <Icon class="size-7" />}
-  {title}
-</li> -->
 <li
-  class="text-xs w-56 bg-card dark:bg-card-dark shadow-md select-none shadow-surface dark:shadow-surface-dark py-2 px-3 rounded flex gap-2 items-center text-text dark:text-text-dark font-medium"
+  class="relative text-nowrap text-xs px-2.5 py-1 border-surface rounded-full dark:border-surface-dark border-x-2 flex items-center gap-1.5"
 >
-  {Icon && <Icon class="size-7" />}
+  {Icon && <Icon class="size-4" />}
   {title}
 </li>

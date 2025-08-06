@@ -19,7 +19,7 @@ const { t } = Astro.props;
       inferSize
       width={10}
       height={10}
-      src="/profile.jpg"
+      src="/profile.avif"
       alt="Una foto de Johann Bonilla"
       class="size-20 shadow-md shadow-[#7f47ff] dark:shadow-[#ffff7f] rounded-full object-center object-cover"
       loading="eager"
@@ -36,19 +36,14 @@ const { t } = Astro.props;
   <p
     class="text-pretty text-xl my-3 text-secondary-text dark:text-secondary-text-dark"
   >
-    Desarrollador de Software en formación, con experiencia práctica en
-    tecnologías como Astro, Svelte, TailwindCSS y más. Apasionado por el
-    aprendizaje continuo, busco oportunidades para crecer dentro de un equipo de
-    desarrollo profesional. Llevo aproximadamente 3 años en la programación,
-    enfocado principalmente en el frontend pero tambien con conocimiento en
-    backend y desarroll móvil.
+    {t.P}
   </p>
   <div class="flex gap-4">
     <SocialButton href="https://www.linkedin.com/in/johann-bonilla-bolivar/">
       <Linkedin class="size-4" />
       Linkedin
     </SocialButton>
-    <SocialButton href="https://github.com">
+    <SocialButton href="https://github.com/K4zura">
       <Github class="size-4" />
       Github
     </SocialButton>

@@ -1,6 +1,7 @@
 ---
 import { Github, Link } from '@lucide/astro';
 import { Image } from 'astro:assets';
+import Badge from './Badge.astro';
 
 interface Props {
   title: string;
@@ -15,35 +16,29 @@ const { title, desc, img, techs, github, website } = Astro.props;
 ---
 
 <article
-  class="shadow-lg shadow-bg-dark/75 dark:shadow-bg/75 rounded grid grid-cols-7"
+  class="shadow-lg shadow-bg-dark/75 dark:shadow-bg/75 rounded grid grid-cols-7 h-56"
 >
   <div
-    class="py-3 px-5 col-span-3 flex flex-col justify-between z-10 select-none"
+    class="py-3 px-5 col-span-4 flex flex-col gap-3 justify-between z-10 select-none"
   >
     <div>
       <h1 class="font-semibold text-2xl flex items-center gap-2">
-        <span class="size-3 bg-[#7f47ff] dark:bg-[#477fff] rounded-full"></span>
+        <span class="size-3 bg-[#7f7fff] dark:bg-[#477fff] rounded-full"></span>
         {title}
       </h1>
-      <p class="font-light">{desc}</p>
+      <p class="font-light text-sm">{desc}</p>
     </div>
     <ul class="flex gap-2 flex-wrap">
       {
         techs.map((tech) => {
-          return (
-            <li class="relative text-nowrap text-xs px-2.5 py-1 border-card rounded-full dark:border-card-dark border-x-2">
-              {/* <span class="absolute inset-0 h-0.5 w-5 bg-bg-dark dark:bg-bg" />
-              <span class="absolute bottom-0 right-0 h-0.5 w-5 bg-bg-dark dark:bg-bg" /> */}
-              {tech}
-            </li>
-          );
+          return <Badge title={tech} />;
         })
       }
     </ul>
   </div>
 
   <picture
-    class="relative h-full col-span-4 ml-8 group overflow-hidden rounded"
+    class="relative h-full col-span-3 ml-6 group overflow-hidden rounded"
   >
     <Image
       inferSize
@@ -51,11 +46,11 @@ const { title, desc, img, techs, github, website } = Astro.props;
       height={10}
       src={img}
       alt={`${title} project of JohannBB`}
-      class="w-full h-full object-center object-cover -mask-linear-90 mask-linear-from-black mask-linear-from-80% mask-linear-to-transparent group-hover:scale-110 transition-transform duration-300"
+      class="w-full h-full object-center object-cover -mask-linear-90 mask-linear-from-black mask-linear-from-80% mask-linear-to-transparent group-hover:scale-110 transition-transform"
     />
 
     <div
-      class="absolute inset-0 group-hover:opacity-100 flex opacity-0 justify-center items-center gap-4 py-4 font-bold text-text-dark transition-all duration-300 backdrop-blur-sm"
+      class="absolute inset-0 group-hover:opacity-100 flex opacity-0 justify-center items-center gap-4 py-4 font-bold text-text-dark transition-all backdrop-blur-sm"
     >
       <a
         href={github}

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { User } from '@lucide/astro';
 import BurbleImage from '@components/BurbleImage.astro';
 
 interface Props {
@@ -11,38 +11,59 @@ const { t } = Astro.props;
 
 <section
   id="about-me"
-  class="scroll-section h-screen max-h-screen flex items-center max-w-[880px]"
+  class="scroll-section h-screen max-h-screen flex items-center max-w-[920px]"
 >
   <div class="flex flex-col gap-2 items-center w-3/5">
-    <h1 class="font-bold text-4xl tracking-tight">About Me</h1>
-    <div
-      class="text-pretty text-lg my-3 text-secondary-text dark:text-secondary-text-dark flex flex-col gap-3 [&>strong]:font-bold [&>strong]:text-[#7f47ff] dark:[&>strong]:text-[#ffff7f]"
+    <h1
+      class="font-bold text-4xl tracking-tight flex items-center gap-2 mr-auto"
     >
-      <p>
-        Soy un desarrollador de software con 3 años de experiencia,
-        especializado en el ecosistema frontend. Mi enfoque principal es la
+      <User class="size-10" />
+      {t.ABOUT.TITLE}
+    </h1>
+    <div
+      class="text-pretty text-lg my-3 text-secondary-text dark:text-secondary-text-dark flex flex-col gap-3"
+    >
+      <p
+        class="[&>strong]:font-semibold [&>strong]:text-[#7f47ff] dark:[&>strong]:text-[#ffff7f]"
+      >
+        {t.ABOUT.P1}
+        <!-- Soy un <strong>desarrollador de software</strong> con
+        <strong>3 años de experiencia</strong>, especializado en el
+        <strong>ecosistema frontend</strong>. Mi enfoque principal es la
         construcción de aplicaciones web robustas y centradas en el usuario,
-        utilizando frameworks modernos como <strong>Astro</strong> y <strong
-          >Svelte</strong
-        >, junto con herramientas de estilización como
-        <strong>Tailwind CSS</strong>.
+        utilizando frameworks modernos como <strong>Astro</strong> y
+        <strong>Svelte</strong>, junto con herramientas de estilización como
+        <strong>Tailwind CSS</strong>. -->
       </p>
-      <p>
-        Disfruto convirtiendo diseños complejos en interfaces funcionales y de
-        alto rendimiento. Aunque mi fuerte es el frontend, mantengo un interés
-        activo en el desarrollo backend y móvil para ampliar mi perspectiva
-        técnica.
+      <p
+        class="[&>strong]:font-semibold [&>strong]:text-[#7f47ff] dark:[&>strong]:text-[#ffff7f]"
+      >
+        {t.ABOUT.P2}
+        <!-- Disfruto convirtiendo diseños complejos en
+        <strong>interfaces funcionales</strong> y de
+        <strong>alto rendimiento</strong>. Aunque mi fuerte es el
+        <strong>frontend</strong>, mantengo un interés activo en el
+        <strong>desarrollo backend</strong>, <strong>móvil</strong> y Me apasiona
+        profundamente el impacto de la <strong>Inteligencia Artificial</strong> en
+        todo el ciclo de vida del software: desde agilizar el desarrollo con
+        <strong>herramientas de asistencia</strong>, hasta integrar
+        <strong>modelos de lenguaje (LLMs)</strong> para construir productos finales
+        más inteligentes y dinámicos para el usuario. -->
       </p>
-      <p>
-        Actualmente, busco unirme a un equipo profesional donde pueda aportar
-        mis habilidades, colaborar en proyectos desafiantes y continuar mi
-        crecimiento en un entorno innovador.
+      <p
+        class="[&>strong]:font-semibold [&>strong]:text-[#7f47ff] dark:[&>strong]:text-[#ffff7f]"
+      >
+        {t.ABOUT.P3}
+        <!-- Actualmente, busco unirme a un equipo profesional donde pueda
+        <strong>
+          aportar mis habilidades, colaborar en proyectos desafiantes
+        </strong> y <strong>continuar mi crecimiento</strong> en un entorno innovador. -->
       </p>
     </div>
   </div>
   <BurbleImage
-    src="/profile.jpg"
+    src="/profile_2.avif"
     alt="Una foto de Johann Bonilla"
-    className="size-80"
+    className="size-96"
   />
 </section>
