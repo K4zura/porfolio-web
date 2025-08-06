@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import BurbleImage from '@components/BurbleImage.astro';
+
+interface Props {
+  t: any;
+}
+
+const { t } = Astro.props;
+---
+
+<section
+  id="about-me"
+  class="scroll-section h-screen max-h-screen flex items-center max-w-[880px]"
+>
+  <div class="flex flex-col gap-2 items-center w-3/5">
+    <h1 class="font-bold text-4xl tracking-tight">About Me</h1>
+    <div
+      class="text-pretty text-lg my-3 text-secondary-text dark:text-secondary-text-dark flex flex-col gap-3 [&>strong]:font-bold [&>strong]:text-[#7f47ff] dark:[&>strong]:text-[#ffff7f]"
+    >
+      <p>
+        Soy un desarrollador de software con 3 años de experiencia,
+        especializado en el ecosistema frontend. Mi enfoque principal es la
+        construcción de aplicaciones web robustas y centradas en el usuario,
+        utilizando frameworks modernos como <strong>Astro</strong> y <strong
+          >Svelte</strong
+        >, junto con herramientas de estilización como
+        <strong>Tailwind CSS</strong>.
+      </p>
+      <p>
+        Disfruto convirtiendo diseños complejos en interfaces funcionales y de
+        alto rendimiento. Aunque mi fuerte es el frontend, mantengo un interés
+        activo en el desarrollo backend y móvil para ampliar mi perspectiva
+        técnica.
+      </p>
+      <p>
+        Actualmente, busco unirme a un equipo profesional donde pueda aportar
+        mis habilidades, colaborar en proyectos desafiantes y continuar mi
+        crecimiento en un entorno innovador.
+      </p>
+    </div>
+  </div>
+  <BurbleImage
+    src="/profile.jpg"
+    alt="Una foto de Johann Bonilla"
+    className="size-80"
+  />
+</section>

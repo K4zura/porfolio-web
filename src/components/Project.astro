@@ -27,11 +27,13 @@ const { title, desc, img, techs, github, website } = Astro.props;
       </h1>
       <p class="font-light">{desc}</p>
     </div>
-    <ul class="flex gap-2">
+    <ul class="flex gap-2 flex-wrap">
       {
         techs.map((tech) => {
           return (
-            <li class="text-nowrap text-xs px-3 py-1.5 bg-card dark:bg-card-dark rounded-full">
+            <li class="relative text-nowrap text-xs px-2.5 py-1 border-card rounded-full dark:border-card-dark border-x-2">
+              {/* <span class="absolute inset-0 h-0.5 w-5 bg-bg-dark dark:bg-bg" />
+              <span class="absolute bottom-0 right-0 h-0.5 w-5 bg-bg-dark dark:bg-bg" /> */}
               {tech}
             </li>
           );
@@ -41,7 +43,7 @@ const { title, desc, img, techs, github, website } = Astro.props;
   </div>
 
   <picture
-    class="relative h-full w-full col-span-4 pl-5 group overflow-hidden rounded"
+    class="relative h-full col-span-4 ml-8 group overflow-hidden rounded"
   >
     <Image
       inferSize
@@ -49,11 +51,11 @@ const { title, desc, img, techs, github, website } = Astro.props;
       height={10}
       src={img}
       alt={`${title} project of JohannBB`}
-      class="w-full h-full object-center object-cover -mask-linear-90 mask-linear-from-black mask-linear-from-80% mask-linear-to-transparent group-hover:scale-110 transition-transform duration-300 group-hover:blur-sm"
+      class="w-full h-full object-center object-cover -mask-linear-90 mask-linear-from-black mask-linear-from-80% mask-linear-to-transparent group-hover:scale-110 transition-transform duration-300"
     />
 
     <div
-      class="absolute inset-0 group-hover:opacity-100 flex opacity-0 justify-center items-center gap-4 py-4 font-bold text-text-dark transition-all duration-300"
+      class="absolute inset-0 group-hover:opacity-100 flex opacity-0 justify-center items-center gap-4 py-4 font-bold text-text-dark transition-all duration-300 backdrop-blur-sm"
     >
       <a
         href={github}

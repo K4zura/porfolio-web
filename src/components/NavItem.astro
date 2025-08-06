@@ -7,7 +7,7 @@ const { href } = Astro.props;
 
 <li>
   <a
-    href={`#${href}`}
+    href={`${href !== 'contact' ? '#' + href : 'mailto:johannbb0520@gmail.com'}`}
     data-nav-link={href}
     class="nav-link px-4 py-1.5 text-sm font-medium text-black dark:text-white rounded-full transition-colors duration-300 hover:bg-bg-dark hover:text-text-dark dark:hover:text-text dark:hover:bg-bg"
   >

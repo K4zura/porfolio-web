@@ -6,6 +6,7 @@ import Hero from '@components/Hero.astro';
 import TechCard from '@components/TechCard.astro';
 import { Target } from '@lucide/astro';
 import Project from '@components/Project.astro';
+import AboutMe from '@components/AboutMe.astro';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }];
@@ -25,68 +26,29 @@ const t = lang === 'es' ? es : en;
     <div class="flex flex-col">
       <h3 class="font-semibold text-lg">Frontend</h3>
       <ul class="flex flex-col gap-2">
-        <TechCard>
-          <Target class="size-6" />
-          Astro
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          Svelte
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          Tailwind CSS
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          JavaScript
-        </TechCard>
+        <TechCard title="Astro" />
+        <TechCard title="Svelte" />
+        <TechCard title="Tailwind CSS" />
+        <TechCard title="JavaScript" />
       </ul>
     </div>
     <div class="flex flex-col">
       <h3 class="font-semibold text-lg">Backend</h3>
       <ul class="flex flex-col gap-2">
-        <TechCard>
-          <Target class="size-6" />
-          TypeScript
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          Java
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          Node JS
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          MySQL
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          PostgreSQL
-        </TechCard>
+        <TechCard title="TypeScript" />
+        <TechCard title="Java" />
+        <TechCard title="Node JS" />
+        <TechCard title="MySQL" />
+        <TechCard title="PostgreSQL" />
+        <TechCard title="PHP" />
       </ul>
     </div>
     <div class="flex flex-col">
       <h3 class="font-semibold text-lg">Others</h3>
       <ul class="flex flex-col gap-2">
-        <TechCard>
-          <Target class="size-6" />
-          Python
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          Kotlin
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          Java
-        </TechCard>
-        <TechCard>
-          <Target class="size-6" />
-          PHP
-        </TechCard>
+        <TechCard title="Python" />
+        <TechCard title="Kotlin" />
+        <TechCard title="PHP" />
       </ul>
     </div>
   </section>
@@ -131,7 +93,7 @@ const t = lang === 'es' ? es : en;
     </div>
   </section>
   <section id="about-me" class="scroll-section min-h-screen py-16">
-    ABOUT ME
+    <AboutMe t={t} />
   </section>
 </Layout>
 

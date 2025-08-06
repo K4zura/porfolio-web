@@ -1,9 +1,46 @@
 ---
-interface Props {}
+import AstroIcon from '@components/icons/AstroIcon.astro';
+import Java from '@components/icons/Java.astro';
+import JavaScript from '@components/icons/JavaScript.astro';
+import Kotlin from '@components/icons/Kotlin.astro';
+import MySql from '@components/icons/MySql.astro';
+import NodeJs from '@components/icons/NodeJs.astro';
+import Php from '@components/icons/Php.astro';
+import PostgreSql from '@components/icons/PostgreSql.astro';
+import Python from '@components/icons/Python.astro';
+import Svelte from '@components/icons/Svelte.astro';
+import Tailwind from '@components/icons/Tailwind.astro';
+import TypeScript from '@components/icons/TypeScript.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const icons = {
+  ['astro']: AstroIcon,
+  ['svelte']: Svelte,
+  ['typescript']: TypeScript,
+  ['tailwind']: Tailwind,
+  ['javascript']: JavaScript,
+  ['java']: Java,
+  ['mysql']: MySql,
+  ['postgresql']: PostgreSql,
+  ['python']: Python,
+  ['kotlin']: Kotlin,
+  ['php']: Php,
+  ['nodejs']: NodeJs
+};
+
+const key = title.toLowerCase().replace(/\s+/g, '') as keyof typeof icons;
+
+const Icon = icons[key];
 ---
 
 <li
   class="text-xs w-56 bg-gradient-to-r from-surface dark:from-surface-dark to-transparent to-90% py-2 px-3 rounded flex gap-2 items-center text-text-dark dark:text-text font-medium"
 >
-  <slot />
+  <Icon />
+  {title}
 </li>

@@ -1,5 +1,7 @@
 ---
-import BurbleImage from './BurbleImage.astro';
+import { Image } from 'astro:assets';
+import SocialButton from '@components/SocialButton.astro';
+import { Github, Linkedin, Mail } from '@lucide/astro';
 
 interface Props {
   t: any;
@@ -10,27 +12,54 @@ const { t } = Astro.props;
 
 <section
   id="home"
-  class="scroll-section min-h-screen py-16 flex justify-between max-w-[880px] items-center"
+  class="scroll-section min-h-screen py-16 flex flex-col justify-center max-w-[750px]"
 >
-  <div class="w-3/5">
-    <h1 class="font-bold text-3xl">
-      <strong class="text-[#7f47ff] dark:text-[#ffff7f]">J</strong>ohann
-      <strong class="text-[#7f47ff] dark:text-[#ffff7f]">B</strong>onilla
-      <strong class="text-[#7f47ff] dark:text-[#ffff7f]">B</strong>olivar
-    </h1>
-    <h2 class="font-semibold text-xl">{t.SUBTITLE}</h2>
-    <p
-      class="text-pretty my-3 text-secondary-text dark:text-secondary-text-dark"
-    >
-      Desarrollador de Software en formación, con experiencia práctica en
-      tecnologías como Astro, Svelte, TailwindCSS y más. Apasionado por el
-      aprendizaje continuo, busco oportunidades para crecer dentro de un equipo
-      de desarrollo profesional
-    </p>
+  <div class="flex gap-4 items-center">
+    <Image
+      inferSize
+      width={10}
+      height={10}
+      src="/profile.jpg"
+      alt="Una foto de Johann Bonilla"
+      class="size-20 shadow-md shadow-[#7f47ff] dark:shadow-[#ffff7f] rounded-full object-center object-cover"
+      loading="eager"
+    />
+    <div>
+      <h1 class="font-bold text-4xl tracking-tight">
+        <strong class="text-[#7f47ff] dark:text-[#ffff7f]">J</strong>ohann
+        <strong class="text-[#7f47ff] dark:text-[#ffff7f]">B</strong>onilla
+        <strong class="text-[#7f47ff] dark:text-[#ffff7f]">B</strong>olivar
+      </h1>
+      <h2 class="font-semibold text-2xl">{t.SUBTITLE}</h2>
+    </div>
   </div>
-  <BurbleImage
+  <p
+    class="text-pretty text-xl my-3 text-secondary-text dark:text-secondary-text-dark"
+  >
+    Desarrollador de Software en formación, con experiencia práctica en
+    tecnologías como Astro, Svelte, TailwindCSS y más. Apasionado por el
+    aprendizaje continuo, busco oportunidades para crecer dentro de un equipo de
+    desarrollo profesional. Llevo aproximadamente 3 años en la programación,
+    enfocado principalmente en el frontend pero tambien con conocimiento en
+    backend y desarroll móvil.
+  </p>
+  <div class="flex gap-4">
+    <SocialButton href="https://www.linkedin.com/in/johann-bonilla-bolivar/">
+      <Linkedin class="size-4" />
+      Linkedin
+    </SocialButton>
+    <SocialButton href="https://github.com">
+      <Github class="size-4" />
+      Github
+    </SocialButton>
+    <SocialButton href="mailto:johannbb0520@gmail.com">
+      <Mail class="size-4" />
+      Send Mail
+    </SocialButton>
+  </div>
+  <!-- <BurbleImage
     src="/profile.jpg"
     alt="Una foto de Johann Bonilla"
     className="size-80"
-  />
+  /> -->
 </section>

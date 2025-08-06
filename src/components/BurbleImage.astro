@@ -26,7 +26,6 @@ const clipId = `burbuja-clip-${Math.random().toString(36).substr(2, 9)}`;
 <div class:list={[className]} style={`clip-path: url(#${clipId});`}>
   <Image
     inferSize
-    loading="eager"
     src={src}
     alt={alt}
     width={100}
